@@ -536,12 +536,46 @@
 
 <script>
     
-// Doughnut chart 1 setup
-var ctxDoughnut1 = document.getElementById('doughnutChart1').getContext('2d');
+    var ctxDoughnut1 = document.getElementById('doughnutChart1').getContext('2d');
+var ctxDoughnut2 = document.getElementById('doughnutChart2').getContext('2d'); // Example for another chart
+
+var numbersToDisplay = {
+    'doughnutChart1': '13',
+    'doughnutChart2': '04' // Example for another chart
+};
+
+const centerTextPlugin = {
+    id: 'centerText',
+    afterDraw: function(chart) {
+        var chartId = chart.canvas.id;
+        var numberToDisplay = numbersToDisplay[chartId];
+        if (numberToDisplay === undefined) return;
+        
+        var ctx = chart.ctx;
+        var width = chart.width;
+        var height = chart.height;
+        var centerX = width / 2;
+        var centerY = height / 2;
+        var fontSize = 30;
+        
+        ctx.save();
+        ctx.font = "bold " + fontSize + "px Poppins, sans-serif";
+        ctx.fillStyle = "#013F4A";
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'alphabetic';
+        centerY += fontSize * 0.5;
+        
+        ctx.fillText(numberToDisplay, centerX, centerY);
+        ctx.restore();
+    }
+};
+
+Chart.register(centerTextPlugin);
+
 var doughnutChart1 = new Chart(ctxDoughnut1, {
     type: 'doughnut',
     data: {
-        datasets: [{
+      datasets: [{
             data: [40, 100, 0, 0],
             backgroundColor: [
                 'rgba(0, 189, 189, 1)', 
@@ -559,45 +593,26 @@ var doughnutChart1 = new Chart(ctxDoughnut1, {
                 position: 'top'
             },
             tooltip: {
-                enabled: false // Disable tooltip (optional)
+                enabled: false
             },
-            // Custom plugin to add the number 13 at the center of the doughnut
-            afterDraw: function(chart) {
-                var ctx = chart.ctx;
-                var width = chart.width;
-                var height = chart.height;
-                var centerX = width / 2;
-                var centerY = height / 2;
-                var fontSize = 40; // Size of the number
-
-                // Set the font style and color
-                ctx.save();
-                ctx.font = fontSize + "px Arial";
-                ctx.fillStyle = "black"; 
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-
-                // Draw the number 13 at the center
-                ctx.fillText('13', centerX, centerY);
-
-                ctx.restore();
-            }
+        },
+        animation: {
+            animateRotate: true,
+            animateScale: true
         }
     }
 });
 
-// Doughnut chart 2 setup
-var ctxDoughnut2 = document.getElementById('doughnutChart2').getContext('2d');
 var doughnutChart2 = new Chart(ctxDoughnut2, {
     type: 'doughnut',
     data: {
-        datasets: [{
+      datasets: [{
             data: [50, 50, 50, 50],
             backgroundColor: [
                 'rgba(0, 189, 189, 1)', 
                 'rgba(212, 212, 212, 1)',
                 'rgba(0, 189, 189, 0.15)', 
-                'rgba(0, 64, 64, 1)',
+                'rgba(0, 64, 64, 1)'
             ],
             borderWidth: 1
         }]
@@ -609,32 +624,17 @@ var doughnutChart2 = new Chart(ctxDoughnut2, {
                 position: 'top'
             },
             tooltip: {
-                enabled: false // Disable tooltip (optional)
+                enabled: false
             },
-            // Custom plugin to add the number 20 at the center of the doughnut
-            afterDraw: function(chart) {
-                var ctx = chart.ctx;
-                var width = chart.width;
-                var height = chart.height;
-                var centerX = width / 2;
-                var centerY = height / 2;
-                var fontSize = 40; // Size of the number
-
-                // Set the font style and color
-                ctx.save();
-                ctx.font = fontSize + "px Arial";
-                ctx.fillStyle = "black"; 
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-
-                // Draw the number 20 at the center
-                ctx.fillText('20', centerX, centerY);
-
-                ctx.restore();
-            }
+        },
+        animation: {
+            animateRotate: true,
+            animateScale: true
         }
     }
 });
+
+
 </script>
         
     <script>
