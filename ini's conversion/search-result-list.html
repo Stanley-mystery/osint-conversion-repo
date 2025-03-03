@@ -217,29 +217,17 @@
         <div class="row mt-5">
             <div class="col-3 border-end">
                 <h5>Filters</h5>
-                <div class="dropdown pc-h-item">
-                    <button class="btn border bg-white pc-head-link dropdown-toggle me-0 show" type="button"
-                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="text-sm">
-                            <span class="text-muted">Date Range:</span>
-                            <span>01/01/22 - 01/01/25</span>
-                        </span>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end pc-h-dropdown" data-popper-placement="bottom-end"
-                        style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate3d(0px, 60.8px, 0px);">
-                        <form class="px-4 py-3 dropdown-item d-flex flex-column gap-3">
-                            <div class="form-group">
-                                <label for="from">From</label>
-                                <input type="date" class="form-control" id="from" name="from"
-                                    placeholder="enter start date">
-                            </div>
-                            <div class="form-group">
-                                <label for="to">To</label>
-                                <input type="date" class="form-control" id="to" name="to" placeholder="enter end date">
-                            </div>
-                            <button type="button" class="btn btn-primary">Filter</button>
-                        </form>
-                    </div>
+                <div class="filter mb-2 me-4">
+                    <div class="start-date-filter input-group">
+                        <span class="input-group-text text-muted text-sm bg-white pe-1">Search Start Date:</span>
+                        <input type="date" class="form-control text-sm fw-bold start-date-input border-start-0 ps-1" placeholder="Username">
+                      </div>
+                </div>
+                <div class="filter mb-2 me-4">
+                    <div class="end-date-filter input-group">
+                        <span class="input-group-text text-muted text-sm bg-white pe-1">Search End Date:</span>
+                        <input type="date" class="form-control text-sm fw-bold end-date-input border-start-0 ps-1" placeholder="Username">
+                      </div>
                 </div>
 
             </div>
